@@ -12,7 +12,7 @@ namespace IMDBData
     {
         public NormalInserter() { }
 
-        public void Insert(List<Title> titles, SqlConnection sqlConn)
+        public void Insert(List<Title> titles, SqlConnection sqlConn, SqlTransaction transAction)
         {
             foreach (Title title in titles)
             {
@@ -29,7 +29,7 @@ namespace IMDBData
 
                 //throw new Exception(SQL);
 
-                SqlCommand sqlComm = new SqlCommand(SQL, sqlConn);
+                SqlCommand sqlComm = new SqlCommand(SQL, sqlConn, transAction);
                 sqlComm.ExecuteNonQuery();
             }
         }

@@ -58,7 +58,7 @@ DateTime before = DateTime.Now;
 try
 {
     NormalInserter inserter = new NormalInserter();
-    inserter.Insert(titles, sqlConn);
+    inserter.Insert(titles, sqlConn, transAction);
     //transAction.Commit();
     transAction.Rollback();
 }
