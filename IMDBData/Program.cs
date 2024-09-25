@@ -6,7 +6,7 @@ using IMDBData.Models;
 using System.Data.SqlClient;
 
 IInserter inserter;
-Console.WriteLine("Tast 1 for normal\r\nTast 2 for prepared");
+Console.WriteLine("Tast 1 for normal\r\nTast 2 for prepared\r\n3 for bulk");
 string input = Console.ReadLine();
 
 switch (input)
@@ -17,10 +17,12 @@ switch (input)
     case "2":
         inserter = new PreparedInserter();
         break;
+    case "3":
+        inserter = new BulkInserter();
+        break;
     default:
         throw new Exception("Du er en hat!");
 }
-
 
 int lineCount = 0;
 List<Title> titles = new List<Title>();
