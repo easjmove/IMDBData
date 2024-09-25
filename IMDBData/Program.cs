@@ -5,6 +5,23 @@ using IMDBData;
 using IMDBData.Models;
 using System.Data.SqlClient;
 
+IInserter inserter;
+Console.WriteLine("Tast 1 for normal\r\nTast 2 for prepared");
+string input = Console.ReadLine();
+
+switch (input)
+{
+    case "1":
+        inserter = new NormalInserter();
+        break;
+    case "2":
+        inserter = new PreparedInserter();
+        break;
+    default:
+        throw new Exception("Du er en hat!");
+}
+
+
 int lineCount = 0;
 List<Title> titles = new List<Title>();
 string filePath = "C:/temp/title.basics.tsv/data.tsv";
@@ -57,7 +74,6 @@ DateTime before = DateTime.Now;
 
 try
 {
-    NormalInserter inserter = new NormalInserter();
     inserter.Insert(titles, sqlConn, transAction);
     //transAction.Commit();
     transAction.Rollback();

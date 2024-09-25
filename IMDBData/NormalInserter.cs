@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace IMDBData
 {
-    public class NormalInserter
+    public class NormalInserter : IInserter
     {
         public NormalInserter() { }
 
@@ -20,7 +20,7 @@ namespace IMDBData
                     "[PrimaryTitle],[OriginalTitle],[IsAdult],[StartYear]," +
                     "[EndYear],[RuntimeMinutes]) " +
                     "VALUES('" + title.TConst + "'" +
-                    ",'" + title.PrimaryTitle.Replace("'","''") + "'" +
+                    ",'" + title.PrimaryTitle.Replace("'", "''") + "'" +
                     ",'" + title.OriginalTitle.Replace("'", "''") + "'" +
                     ",'" + title.IsAdult + "'" +
                     "," + CheckIntForNull(title.StartYear) +
